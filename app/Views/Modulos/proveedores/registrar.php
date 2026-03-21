@@ -32,9 +32,23 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Registrar</button>
-            <button type="reset" class="btn btn-secondary">Cancelar</button>
+            <a href="<?= base_url('proveedores') ?>" class="btn btn-secondary">Cancelar</a>
 
         </form>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const formulario = document.querySelector("#form-proveedores");
+
+        formulario.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            if (confirm("¿Registramos este proveedor?")) {
+                formulario.submit()
+            }
+        })
+    })
+</script>
 <?= $footer ?>

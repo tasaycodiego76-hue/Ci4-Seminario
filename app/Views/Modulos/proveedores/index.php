@@ -31,7 +31,7 @@
                             class="btn btn-sm btn-secondary">Eliminar</a>
                         <!-- eliminacion previa confirmacion -->
                         <a href="#" class="btn btn-sm btn-danger btn-eliminar" data-idproveedor="<?= $proveedor['id'] ?>"
-                            data-nombres="<?= $proveedor['razonsocial'] ?>">
+                            data-razonsocial="<?= $proveedor['razonsocial'] ?>">
                             Eliminar</a>
                         <!-- Si deseamos tener control sobre un grupo especifico de elementos, debemos agregarle un valor diferenciardor  -->
                         <a href="<?= base_url('proveedores/buscar/' . $proveedor['id']) ?>"
@@ -54,15 +54,15 @@
 
             //Detectar os botones eliminacion
             if (event.target.classList.contains('btn-eliminar')) {
-                const nombres = event.target.getAttribute("data-descripcion");
+                const razonsocial = event.target.getAttribute("data-razonsocial");
 
-                //recuperamos el data id-cliente
-                const idCliente = event.target.getAttribute("data-idproveedor");
+                //recuperamos el data id-proveedor
+                const idProveedores = event.target.getAttribute("data-idproveedor");
 
-                if (confirm("¿Deseas eliminar el registro?")) {
+                if (confirm(`¿Deseas eliminar el proveedor: ${razonsocial}?`)) {
 
                     //proceder a eliminar
-                    window.location.href = "<?= base_url('proveedores/eliminar/') ?>" + idCliente
+                    window.location.href = "<?= base_url('proveedores/eliminar/') ?>" + idProveedores
                 }
             }
 

@@ -29,7 +29,7 @@
                             class="btn btn-sm btn-secondary">Eliminar</a>
                         <!-- eliminacion previa confirmacion -->
                         <a href="#" class="btn btn-sm btn-danger btn-eliminar" data-idproducto="<?= $producto['id'] ?>"
-                            data-nombres="<?= $producto['descripcion'] ?>">
+                            data-descripcion="<?= $producto['descripcion'] ?>">
                             Eliminar</a>
                         <!-- Si deseamos tener control sobre un grupo especifico de elementos, debemos agregarle un valor diferenciardor  -->
                         <a href="<?= base_url('productos/buscar/' . $producto['id']) ?>"
@@ -52,15 +52,15 @@
 
             //Detectar os botones eliminacion
             if (event.target.classList.contains('btn-eliminar')) {
-                const nombres = event.target.getAttribute("data-descripcion");
+                const descripcion = event.target.getAttribute("data-descripcion");
 
-                //recuperamos el data id-cliente
-                const idCliente = event.target.getAttribute("data-idproducto");
+                //recuperamos el data id-productos
+                const idProducto = event.target.getAttribute("data-idproducto");
 
-                if (confirm("¿Deseas eliminar el registro?")) {
+                if (confirm(`¿Deseas eliminar el producto: ${descripcion}?`)) {
 
                     //proceder a eliminar
-                    window.location.href = "<?= base_url('productos/eliminar/') ?>" + idCliente
+                    window.location.href = "<?= base_url('productos/eliminar/') ?>" + idProducto
                 }
             }
 

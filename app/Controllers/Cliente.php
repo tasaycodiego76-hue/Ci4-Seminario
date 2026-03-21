@@ -42,6 +42,12 @@ class Cliente extends BaseController
         return view('Modulos/clientes/registrar', $data);
     }
 
+    /**
+     * Retorna la vista para actualizar los datos de un cliente
+     * @param int|null $id
+     * @return string
+     */
+
 public function buscar(int $id = null)
 {
     $cliente = new ClienteModel();
@@ -56,6 +62,10 @@ public function buscar(int $id = null)
     return view('Modulos/clientes/actualizar', $data);
 }
 
+/**
+ * Actualiza los datos de un cliente
+ * @return RedirectResponse
+ */
 public function actualizar(): RedirectResponse
 {
     $cliente = new ClienteModel();

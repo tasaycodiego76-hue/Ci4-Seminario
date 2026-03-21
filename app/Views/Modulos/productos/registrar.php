@@ -26,9 +26,23 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Registrar</button>
-            <button type="reset" class="btn btn-secondary">Cancelar</button>
+            <a href="<?= base_url('productos') ?>" class="btn btn-secondary">Cancelar</a>
 
         </form>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const formulario = document.querySelector("#form-productos");
+
+        formulario.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            if (confirm("¿Registramos este producto?")) {
+                formulario.submit()
+            }
+        })
+    })
+</script>
 <?= $footer ?>

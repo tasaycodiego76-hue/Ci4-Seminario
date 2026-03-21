@@ -57,7 +57,7 @@
                 //recuperamos el data id-cliente
                 const idCliente = event.target.getAttribute("data-idcliente");
 
-                if (confirm("¿Deseas eliminar el registro?")) {
+                if (confirm(`¿Deseas eliminar el cliente: ${nombres}?`)) {
 
                     //proceder a eliminar
                     window.location.href = "<?= base_url('clientes/eliminar/') ?>" + idCliente
