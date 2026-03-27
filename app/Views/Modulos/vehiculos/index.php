@@ -84,6 +84,29 @@
     document.addEventListener("DOMContentLoaded", function () {
 
         const tabla = document.querySelector("#contend-vehiculos")
+        // Antes decía #lista-marcas, cámbialo al ID real de tu HTML
+        const listaMarcas = document.querySelector("#marcas");
+
+        async function obtenerMarcas() {
+            try {
+                const response = await fetch(`<?= base_url('marcas/listar') ?>`)
+                const data = await response.json();
+
+                if (response.status != 200) { return; }
+                if (!data) { return; }
+
+                data.forEach(element => {
+                    const tagOption = document.createElement("option")
+                    tagOption.value = element.id
+                    tagOption.innerText = element.marca
+                    listaMarcas.appendChild(tagOption)
+                });
+            } catch (e) {
+                console.error("No se pudo obtener las marcas", e)
+            }
+        }
+
+
         async function obtenerVehiculos() {
             try {
                 const response = await fetch(`<?= base_url('vehiculos/listar') ?>`)
@@ -120,6 +143,7 @@
         }
 
         obtenerVehiculos()
+        obtenerMarcas()
     })
 </script>
 <?= $footer ?>

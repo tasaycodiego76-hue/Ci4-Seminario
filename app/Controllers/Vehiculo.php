@@ -27,6 +27,27 @@ class Vehiculo extends BaseController
         $vehiculo = new VehiculoModel();
         return $this->response->setJSON($vehiculo->obtenerVehiculos());
     }
+
+
+    public function registraVehiculo()
+    {
+        $vehiculo = new VehiculoModel();
+
+
+        $data = $this->response->getJSON();
+
+        if ($vehiculo->insert($data)) {
+            return $this->response->setJSON([
+                "succes" => true,
+                "message" => "Vehiculo registrado correctamente"
+            ]);
+        }
+
+        return $this->response->setJSON([
+            "succes" => false,
+            "message" => "Error al registrar vehiculo"
+        ]);
+    }
 }
 
 ?>
