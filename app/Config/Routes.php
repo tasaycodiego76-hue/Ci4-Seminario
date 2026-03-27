@@ -43,6 +43,8 @@ $routes->get('proveedores/buscar/(:num)', 'Proveedor::buscar/$1');
 $routes->post('/proveedores/actualizar', 'Proveedor::actualizar');
 
 
+$routes->get('/vehiculos', 'Vehiculo::index');
+
 
 //reporte 
 $routes->get(from: '/diario', to: 'Reporte::diario');
