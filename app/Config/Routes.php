@@ -44,6 +44,8 @@ $routes->post('/proveedores/actualizar', 'Proveedor::actualizar');
 
 
 $routes->get('/vehiculos', 'Vehiculo::index');
+//BD > MODELO > CONTROLADOR > RUTAS > JS > HTML
+$routes->get('/vehiculos/listar', 'vehiculo::getVehiculos');
 
 
 //reporte 
