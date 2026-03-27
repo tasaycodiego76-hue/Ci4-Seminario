@@ -55,7 +55,7 @@
 
                     <div class="form-group">
                         <label for="anio">Año:</label>
-                        <input type="text" class="rounded-0- form-control" id="modelo" required minlength="4"
+                        <input type="text" class="rounded-0- form-control" id="anio" required minlength="4"
                             maxlength="4" required>
                     </div>
 
@@ -84,8 +84,40 @@
     document.addEventListener("DOMContentLoaded", function () {
 
         const tabla = document.querySelector("#contend-vehiculos")
-        // Antes decía #lista-marcas, cámbialo al ID real de tu HTML
         const listaMarcas = document.querySelector("#marcas");
+        const formulario = document.querySelector("#formulario-vehiculos");
+
+
+
+
+        async function registrarVehiculo() {
+            try {
+                //Objeto que contenga los datos para registro
+
+                const vehiculo = {
+                    idmarca: listaMarcas.value,
+                    modelo: document.querySelector("#modelo").value,
+                    anio: document.querySelector("#anio").value,
+                    color: document.querySelector("#color").value,
+                    precio: document.querySelector("#precio").value,
+                }
+
+                //Se envía la solicitud
+                const response = await fetch(`<?= base_url('vehiculos/registrar') ?>`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(vehiculo)
+                });
+
+                const data = await response.json()
+                alert(data.message)
+
+                //no funcionó
+                if (!data.succes) { return; }
+            } catch (e) {
+                console.error("No se logro registrar", e)
+            }
+        }
 
         async function obtenerMarcas() {
             try {
@@ -94,6 +126,7 @@
 
                 if (response.status != 200) { return; }
                 if (!data) { return; }
+
 
                 data.forEach(element => {
                     const tagOption = document.createElement("option")
@@ -129,10 +162,10 @@
                     <th>${element.anio}</th>
                     <th>${element.color}</th>
                     <th>${element.precio}</th>
-                    <th>
+                    <td>
                     <a href='#' class='btn btn-sm btn-info '> Editar </a>
                     <a href='#' class='btn btn-sm btn-danger '> Eliminar </a>
-                    </th>
+                    </td>
                 </tr>
 
                 `
@@ -141,6 +174,13 @@
                 console.error("Error al obtener los datos", e)
             }
         }
+
+        formulario.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            if (!confirm("¿Registramos este vehiculo?")) { return; }
+            registrarVehiculo();
+        })
 
         obtenerVehiculos()
         obtenerMarcas()

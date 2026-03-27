@@ -48,6 +48,7 @@ $routes->get('/vehiculos', 'Vehiculo::index');
 $routes->get('/vehiculos/listar', 'vehiculo::getVehiculos');
 $routes->post('/vehiculos/registrar', 'Vehiculo::registrarVehiculo');
 
+$routes->get('/marcas/listar', 'Marca::getMarcas');
 
 //reporte 
 $routes->get(from: '/diario', to: 'Reporte::diario');

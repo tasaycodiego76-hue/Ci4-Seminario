@@ -4,7 +4,7 @@ use App\Controllers\BaseController;
 use App\Models\MarcaModel;
 use CodeIgniter\HTTP\RedirectResponse;
 
-class Vehiculo extends BaseController
+class Marca extends BaseController
 {
     public function getMarcas()
     {
