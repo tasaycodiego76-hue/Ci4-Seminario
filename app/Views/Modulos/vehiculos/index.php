@@ -18,7 +18,7 @@
                     <th>Acciones</th>
                 </tr>
             </thead>
-            <tbody id="contend-vehiculos">
+            <tbody id="content-vehiculos">
 
             </tbody>
         </table>
@@ -66,7 +66,7 @@
 
                     <div class="form-group">
                         <label for="precio">Precio:</label>
-                        <input type="text" class="rounded-0- form-control" id="precio" required>
+                        <input type="text" class="rounded-0 form-control " id="precio" required>
 
                     </div>
                 </form>
@@ -83,7 +83,7 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
 
-        const tabla = document.querySelector("#contend-vehiculos")
+        const tabla = document.querySelector("#content-vehiculos")
         const listaMarcas = document.querySelector("#marcas");
         const formulario = document.querySelector("#formulario-vehiculos");
 
@@ -122,16 +122,16 @@
                 const data = await response.json()
                 notificar(data.message)
                 //No funciono
-                if (!data.message) { return; }
+                if (!data.success) { return; }
                 //Todo bien
-                console.log(data)
                 //Cerrar Modal
                 $('#modal-vehiculos').modal('hide')
                 //formulario se reinicia
+                  formulario.reset()
                 //Actualizar Tabla
                 obtenerVehiculos()
-            } catch (error) {
-                console.error("No se logro Registrar;", error)
+            } catch (e) {
+                console.error("No se logro Registrar:", e)
             }
         }
         async function obtenerMarcas() {
@@ -171,12 +171,12 @@
                 data.forEach(element => {
                     tabla.innerHTML += `
                 <tr>
-                    <th>${element.id}</th>
-                    <th>${element.marca}</th>
-                    <th>${element.modelo}</th>
-                    <th>${element.anio}</th>
-                    <th>${element.color}</th>
-                    <th>${element.precio}</th>
+                    <td>${element.id}</td>
+                    <td>${element.marca}</td>
+                    <td>${element.modelo}</td>
+                    <td>${element.anio}</td>
+                    <td>${element.color}</td>
+                    <td>${element.precio}</td>
                     <td>
                     <a href='#' class='btn btn-sm btn-info '> Editar </a>
                     <a href='#' class='btn btn-sm btn-danger '> Eliminar </a>
