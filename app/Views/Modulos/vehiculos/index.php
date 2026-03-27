@@ -88,12 +88,25 @@
         const formulario = document.querySelector("#formulario-vehiculos");
 
 
+        //Función estandar
+        function notificar(mensaje = '') {
+            Swal.fire({
+                text: mensaje,
+                icon: 'info',
+                position: 'top-end',
+                timer: 2500,
+                timerProgressBar: true,
+                showConfirmButton: false,
+                toast: true,
+                background: '#fff'
+            })
+        }
+
+
 
 
         async function registrarVehiculo() {
             try {
-                //Objeto que contenga los datos para registro
-
                 const vehiculo = {
                     idmarca: listaMarcas.value,
                     modelo: document.querySelector("#modelo").value,
@@ -101,24 +114,26 @@
                     color: document.querySelector("#color").value,
                     precio: document.querySelector("#precio").value,
                 }
-
-                //Se envía la solicitud
                 const response = await fetch(`<?= base_url('vehiculos/registrar') ?>`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(vehiculo)
-                });
-
+                })
                 const data = await response.json()
-                alert(data.message)
-
-                //no funcionó
-                if (!data.succes) { return; }
-            } catch (e) {
-                console.error("No se logro registrar", e)
+                notificar(data.message)
+                //No funciono
+                if (!data.message) { return; }
+                //Todo bien
+                console.log(data)
+                //Cerrar Modal
+                $('#modal-vehiculos').modal('hide')
+                //formulario se reinicia
+                //Actualizar Tabla
+                obtenerVehiculos()
+            } catch (error) {
+                console.error("No se logro Registrar;", error)
             }
         }
-
         async function obtenerMarcas() {
             try {
                 const response = await fetch(`<?= base_url('marcas/listar') ?>`)
