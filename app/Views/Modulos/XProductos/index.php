@@ -1,7 +1,7 @@
 <?= $header ?>
 <div class="row">
     <div class="col-md-12">
-        <h5>Administrador de productos</h5>
+        <h5>Administrador de XProductos</h5>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-productos">
             Nuevo producto
         </button>
