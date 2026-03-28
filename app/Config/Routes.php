@@ -57,3 +57,7 @@ $routes->get(from: '/mensual', to: 'Reporte::mensual');
 $routes->get(from: '/personalizado', to: 'Reporte::personalizado');
 
 
+// Rutas para el nuevo controlador
+$routes->get('xproductos',             'XProductos::index'); 
+$routes->get('xproductos/listar',      'XProductos::getProductos');
+$routes->post('xproductos/registrar',   'XProductos::registrarProducto');

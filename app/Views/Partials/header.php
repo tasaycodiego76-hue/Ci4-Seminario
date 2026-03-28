@@ -72,6 +72,7 @@
                         <a class="collapse-item" href="<?= base_url('proveedores') ?>">Proovedores</a>
                         <a class="collapse-item" href="<?= base_url('productos') ?>">Productos</a>
                         <a class="collapse-item" href="<?= base_url('vehiculos') ?>">Vehiculos</a>
+                        <a class="collapse-item" href="<?= base_url('xproductos') ?>">XProductos</a>
                     </div>
                 </div>
             </li>
