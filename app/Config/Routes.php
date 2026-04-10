@@ -61,3 +61,6 @@ $routes->get(from: '/personalizado', to: 'Reporte::personalizado');
 $routes->get('/xproductos',             'XProductos::index'); 
 $routes->get('/xproductos/listar',      'XProductos::getProductos');
 $routes->post('/xproductos/registrar',   'XProductos::registrarProducto');
+
+//Rutas para reportes PDF
+$routes->get('/reportes/vehiculos','ReporteController::generarReporteVehiculos');
