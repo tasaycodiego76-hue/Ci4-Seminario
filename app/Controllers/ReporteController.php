@@ -7,15 +7,18 @@ use Spipu\Html2Pdf\Exception\Html2PdfException;//manejar excepciones del pdf
 class ReporteController extends BaseController{
 
     public function generarReportePrueba(){
-        $personas =[
-
+        $listapersonas =[
     ["apellidos"=> "Torres", "nombres"=>"Carlos","telefono"=>"987654321","Genero"=>"M", "Sueldo"=>"5000"],
     ["apellidos"=> "Flore", "nombres"=>"Martin","telefono"=>"987654444","Genero"=>"M", "Sueldo"=>"4000"],
     ["apellidos"=> "Sanchez", "nombres"=>"Carol","telefono"=>"987654333","Genero"=>"F", "Sueldo"=>"3000"],
     ["apellidos"=> "Levano", "nombres"=>"Sofia","telefono"=>"987654222","Genero"=>"F", "Sueldo"=>"2000"],
     ["apellidos"=> "Garcia", "nombres"=>"Vanessa","telefono"=>"987654111","Genero"=>"F", "Sueldo"=>"1000"],
         ];
-        $html = view('Reports/prueba.php',['personas'=> $personas]);
+
+        $estilos = view('Reports/estilos');
+        $html = view('Reports/prueba',['personas'=>$listapersonas,
+        'estilos'=>$estilos]);
+
         try{
 
         $html2pdf = new Html2Pdf('P', 'A4', 'es',true, 'UFT-8',[20,15,15,15]);
