@@ -64,3 +64,4 @@ $routes->post('/xproductos/registrar',   'XProductos::registrarProducto');
 
 //Rutas para reportes PDF
 $routes->get('/reportes/vehiculos','ReporteController::generarReporteVehiculos');
+$routes->get('/reportes/prueba','ReporteController::generarReportePrueba');
