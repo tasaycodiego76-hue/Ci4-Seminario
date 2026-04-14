@@ -16,8 +16,9 @@ class ReporteController extends BaseController{
         ];
 
         $estilos = view('Reports/estilos');
+        $camioneta = base_url('images/carro.jpg');
         $html = view('Reports/prueba',['personas'=>$listapersonas,
-        'estilos'=>$estilos]);
+        'estilos'=>$estilos, 'camioneta' =>$camioneta]);
 
         try{
 

@@ -49,6 +49,9 @@ $routes->get('/vehiculos/listar', 'vehiculo::getVehiculos');
 $routes->post('/vehiculos/registrar', 'Vehiculo::registrarVehiculo');
 
 $routes->get('/marcas/listar', 'Marca::getMarcas');
+$routes->get('/vehiculos/reporte', 'Vehiculo::mostrarUIReportes');
+
+
 
 //reporte 
 $routes->get(from: '/diario', to: 'Reporte::diario');
@@ -65,3 +68,4 @@ $routes->post('/xproductos/registrar',   'XProductos::registrarProducto');
 //Rutas para reportes PDF
 $routes->get('/reportes/vehiculos','ReporteController::generarReporteVehiculos');
 $routes->get('/reportes/prueba','ReporteController::generarReportePrueba');
+

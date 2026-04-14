@@ -26,6 +26,8 @@
     <page_footer>
         <div class="pie">Pagina: [[page_cu]] </div>
     </page_footer>
+
+   <?= base_url('images/auto.jpg')?>
     
     <table class="table">
         <thead>

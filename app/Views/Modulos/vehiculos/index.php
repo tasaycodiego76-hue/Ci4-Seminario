@@ -6,6 +6,9 @@
             Nuevo vehiculo
         </button>
 
+        <a href="<?= base_url('vehiculos/reporte') ?>" class="btn btn-primary">Reportes</a>
+
+
         <table class="table table-sm mt-3">
             <thead>
                 <tr>
